@@ -14,9 +14,11 @@
 		
 	使用ctags和cscope的查找功能需要先建立索引，首先进入指定项目的目录中，然后用下面的命令：
 		
+		$ find ./* -name "*.py" > cscope.files
 		$ cscope -Rbqk
 		$ ctags -R
-		 
+		$ rm cscope.files
+
 	然后就可以使用VIM了.下面先看一张整体效果图：
 	![Alt text](picture/capture_20140614_1_all.png)
 3. 效果图说明：整体可分为3个部分，左边是一个list，显示文件的函数、变量、宏等等信息；中间是主编辑区，可以代码补全、查找等操作；右边是曾经打开过的一个文件列表。
