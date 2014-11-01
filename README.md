@@ -14,7 +14,7 @@
 		
 	使用ctags和cscope的查找功能需要先建立索引，首先进入指定项目的目录中，然后用下面的命令：
 		
-		$ find ./* -name "*.py" > cscope.files
+		$ find -L ./* ./path/ ./pathxxx/ -name "*.py" -or -name "*.c" -or -name "*.cc" -or -name "*.h" -or -name "*.s" -or -name "*.mib" -or -name "*.php" -or -name "*.js" -or -name "*.html" -or -name "Makefile" > cscope.files   ##-L 选项是为了可以跟踪符号链接
 		$ cscope -Rbqk
 		$ ctags -R
 		$ rm cscope.files
