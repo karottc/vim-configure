@@ -16,14 +16,15 @@ set softtabstop=4
 set cindent    "C语言格式对齐
 set nobackup
 set nocompatible	"不使用VI默认键盘布局
-set mouse=a		"使鼠标管用
+"set mouse=a		"使鼠标管用
 syntax enable   "使代码高亮
 syntax on
 colorscheme desert  "选择默认配色模式
 set cursorline
 "set cursorcolumn  " 高亮光标所在列
 set cc=80  " 高亮第80列
-set foldmethod=indent
+"set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 "namp f :<zc zo>
 "===========基本配置结束================================================"
@@ -49,6 +50,7 @@ nmap <F6> :cn<cr>
 nmap <F7> :cp<cr>
 nmap <F4> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <F8> :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <F10> :cs find g <C-R>=expand("<cword>")<CR><CR>
 "nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 "nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 "nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -95,6 +97,20 @@ Plugin 'user/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+end
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+"set runtimepath+=~/.vim/bundle/neobundle.vim/
+" 增加swift的支持
+NeoBundle 'toyamarinyon/vim-swift'
+"Plugin 'toyamarinyon/vim-swift'
+
+call neobundle#end()
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -108,7 +124,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Python support "
 set ofu=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
