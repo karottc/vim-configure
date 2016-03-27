@@ -22,10 +22,12 @@ syntax on
 colorscheme desert  "选择默认配色模式
 set cursorline
 "set cursorcolumn  " 高亮光标所在列
-set cc=80  " 高亮第80列
+set cc=100  " 高亮第80列
 "set foldmethod=indent
 set foldmethod=syntax
 set foldlevel=99
+set list
+set listchars=tab:>-,trail:~    " 现实tab和空格字符
 "namp f :<zc zo>
 "===========基本配置结束================================================"
 
@@ -37,7 +39,8 @@ set helplang=cn
 "set tags=/sview/dchen_snap_11/vobs/TS_nextgen/tags
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
-let g:winManagerWindowLayout='FileExplorer|TagList'
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
 nmap t :Tlist<cr>
 nmap f @=((foldclosed(line('.'))<0)?'zc':'zo')<cr>
